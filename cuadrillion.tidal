@@ -1,0 +1,133 @@
+{-
+Anny: Cuadrillion (Demo)
+anny.audio
+
+First played for Algorave's fith birthday, #algofive 17th March 2017
+
+Written for Fwonk release nr. 200 out in March 2017. FW200 is Fwonk's
+final release, at least in its current form, but its catalogue will
+live on. There is a lot of very good electronic music in there, so be
+sure to check it out some time!
+fwonk.co.uk
+
+See README.md
+-}
+
+let bpm b = cps (b/60)
+    every' n o f = when ((== (o-1)) . (`mod` n)) f
+    d'drum = d1
+    d'perc = d2
+    d'bass = d3
+    d'bleep = d4
+    d'moog = d4
+    d'gt = d5
+    d'gt2 = d6
+    d'gt3 = d7
+
+bpm 149
+
+-- @bleep
+d'bleep $
+  -- every' 5 2 (iter 4) $ -- (2)
+  -- every 3 (rev . slow 2 . chop 4) $ -- (1)
+  n "[[~ 0] ~ 1 ~]/4" # s "bleep"
+  # gain "1.2"
+
+d'drum $
+  every' 16 16 (overlay $ n "~ 1!!" # s "drum") $
+  1 <~ n "1/16" # s "drum"
+
+-- @drumintro
+d'drum $
+  every' 16 16 (overlay $ n "~ 1!!" # s "drum") $
+  n "{1, [~! [~ 0]!]/4}" # s "drum"
+
+d'drum $
+  every' 16 16 (overlay $ n "~ 1!!" # s "drum") $
+  n "{1, [~! [~ 0]!]/4, [[~ 3] 3]/2}" # s "drum"
+
+d'perc $ n "[~ 1 ~ ~]/4" # s "drum2"
+
+-- @perc
+d'perc $
+  stack [
+    n "[~ 1 0 ~]/4",
+    0.5 ~> n "[3 2 ~]/3"
+    -- 0.75 ~> n "[3 2 ~ 2 3]/5", -- (1)
+    -- 0.25 ~> n "[~ 3 2 ~ 0 2 3]/7" -- (2)
+  ]
+  # s "drum2"
+
+-- @drum
+d'drum $
+  -- every' 16 16 (density 2) $ -- (1) replacing (0)
+  every' 16 16 (within (0.5, 1) $ density 2) $ -- (0)
+  n "{0, 1, [~! [~ 0]!]/4, [[~ 3] 3]/2}" # s "drum"
+
+-- @bass
+d'bass $
+  -- slowspread slow [1,1,1,2,3] $ -- (2)
+  (0.5 <~) $ rev $ gap 32 $
+  -- superimpose ((# gain "0.7") . (# speed "3")) $ -- (1)
+  every' 32 31 (overlay $ n "2" # s "drbass") $
+  every' 16 16 (overlay $ n "1 ~" # s "drbass") $
+  n "[0 0 [~ 0] !]/4" # s "drbass"
+  # gain "0.9"
+  # vowel "{a, i}"
+  # shape "0.4"
+  # orbit "1" # room "0.2" # size "0.1"
+  # resonance "0.1" # cutoff "130" -- 10 -> 130
+
+-- @gt
+d'gt $ -- every' 8 8 (const silence) $ -- (1) then (3) remove
+  -- every 3 (slow 32) $ -- (1) then (2) remove
+  every 2 rev $
+  (0.5 ~>) $
+  slow 8 $ smash 16 [1,2] $ striate 16 $
+  n "0" # s "acb"
+  # cut "7"
+  # gain "0.8" -- 0.1 -> 0.8
+  # speed (scale 0.7 1.4 $ slow 3 sine1)
+  # vowel "u"
+
+-- @gt2
+d'gt2 $ (0.5 <~) $
+  slow 8 $
+  iter 4 $
+  striate 16 $
+  sound "acg"
+  # cut "6"
+  # shape "0.4"
+  # gain "0.9"
+
+-- ~drum w/ (1)
+
+-- @gt3
+let hp = "240"
+    lp = "1200"
+    r = "0.3"
+  in d'gt3 $
+     (3 ~>) $
+     -- every' 4 2 (superimpose (3 <~)) $ -- (1) and (2) remove
+     slow 16 . gap 8 $ -- (0) and (2) remove
+     -- slow 30 . gap 15 $ -- (2)
+     sound "dg"
+     # gain "0.9"
+     # orbit "1" # room "0.2" # size "0.1"
+     # speed (scale 1 1.25 $ slow 4.1 sine1)
+     # cutoff lp # resonance r
+     # hcutoff hp # resonance r
+
+mapM_ ($ silence) [d'gt, d'gt2, d'gt3]
+
+-- ~perc w/ (1)
+-- ~perc w/ (2)
+-- ~gt w/ (1)
+-- ~bass w/ (1)
+-- ~gt2
+-- ~gt w/ (2) then (3)
+-- ~gt3 w/ (2)
+
+mapM_ ($ silence) [d'gt, d'gt2, d'gt3, d'bass]
+
+hush
