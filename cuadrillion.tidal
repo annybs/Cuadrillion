@@ -19,7 +19,6 @@ let bpm b = cps (b/60)
     d'perc = d2
     d'bass = d3
     d'bleep = d4
-    d'moog = d4
     d'gt = d5
     d'gt2 = d6
     d'gt3 = d7
