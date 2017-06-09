@@ -14,6 +14,7 @@ See README.md
 -}
 
 let bpm b = cps (b/60)
+    msil = mapM_ ($ silence)
     every' n o f = when ((== (o-1)) . (`mod` n)) f
     d'drum = d1
     d'perc = d2
@@ -25,7 +26,7 @@ let bpm b = cps (b/60)
 
 bpm 149
 
--- @bleep
+-- @cubleep
 d'bleep $
   -- every' 5 2 (iter 4) $ -- (2)
   -- every 3 (rev . slow 2 . chop 4) $ -- (1)
@@ -36,7 +37,7 @@ d'drum $
   every' 16 16 (overlay $ n "~ 1!!" # s "drum") $
   1 <~ n "1/16" # s "drum"
 
--- @drumintro
+-- @cudrumintro
 d'drum $
   every' 16 16 (overlay $ n "~ 1!!" # s "drum") $
   n "{1, [~! [~ 0]!]/4}" # s "drum"
@@ -47,7 +48,7 @@ d'drum $
 
 d'perc $ n "[~ 1 ~ ~]/4" # s "drum2"
 
--- @perc
+-- @cuperc
 d'perc $
   stack [
     n "[~ 1 0 ~]/4",
@@ -57,13 +58,13 @@ d'perc $
   ]
   # s "drum2"
 
--- @drum
+-- @cudrum
 d'drum $
   -- every' 16 16 (density 2) $ -- (1) replacing (0)
   every' 16 16 (within (0.5, 1) $ density 2) $ -- (0)
   n "{0, 1, [~! [~ 0]!]/4, [[~ 3] 3]/2}" # s "drum"
 
--- @bass
+-- @cubass
 d'bass $
   -- slowspread slow [1,1,1,2,3] $ -- (2)
   (0.5 <~) $ rev $ gap 32 $
@@ -77,7 +78,7 @@ d'bass $
   # orbit "1" # room "0.2" # size "0.1"
   # resonance "0.1" # cutoff "130" -- 10 -> 130
 
--- @gt
+-- @cugt
 d'gt $ -- every' 8 8 (const silence) $ -- (1) then (3) remove
   -- every 3 (slow 32) $ -- (1) then (2) remove
   every 2 rev $
@@ -89,7 +90,7 @@ d'gt $ -- every' 8 8 (const silence) $ -- (1) then (3) remove
   # speed (scale 0.7 1.4 $ slow 3 sine1)
   # vowel "u"
 
--- @gt2
+-- @cugt2
 d'gt2 $ (0.5 <~) $
   slow 8 $
   iter 4 $
@@ -99,9 +100,9 @@ d'gt2 $ (0.5 <~) $
   # shape "0.4"
   # gain "0.9"
 
--- ~drum w/ (1)
+-- drum @ 1
 
--- @gt3
+-- @cugt3
 let hp = "240"
     lp = "1200"
     r = "0.3"
@@ -117,16 +118,16 @@ let hp = "240"
      # cutoff lp # resonance r
      # hcutoff hp # resonance r
 
-mapM_ ($ silence) [d'gt, d'gt2, d'gt3]
+msil [d'gt, d'gt2, d'gt3]
 
--- ~perc w/ (1)
--- ~perc w/ (2)
--- ~gt w/ (1)
--- ~bass w/ (1)
--- ~gt2
--- ~gt w/ (2) then (3)
--- ~gt3 w/ (2)
+-- cuperc @ 1
+-- cuperc @ 2
+-- cugt @ 1
+-- cubass @ 1
+-- cugt2
+-- cugt @ 2 then 3
+-- cugt3 @ 2
 
-mapM_ ($ silence) [d'gt, d'gt2, d'gt3, d'bass]
+msil [d'gt, d'gt2, d'gt3, d'bass]
 
 hush
