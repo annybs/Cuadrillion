@@ -2,17 +2,17 @@ Sample,Index,File,Origin,URL,Notes
 acb,0,AC_BassA_128-A2.wav,,,
 acg,0,AC_GuitarsB_95-C3.wav,,,
 arpb,0,AC_ARPBassB_128-A.wav,,,
-bleep,0,000-Fx_09.wav,,,
-bleep,1,010-Fx_09.wav,,,
-dg,0,Processed_16.wav,,,
-drbass,0,000 Kick Power trunc.wav,,,
-drbass,1,001 Kick Power trunc2.wav,,,
-drbass,2,100 Kick Power.wav,,,
-drum,0,000 Kick LazerDice 6.wav,,,
-drum,1,010 Snare Party 2.wav,,,
-drum,2,011 Snare Turnt 2.wav,,,
-drum,3,020 DnBHatD-06.wav,,,
-drum2,0,Snare ElbeDock.wav,,,
-drum2,1,Snare EnaSwag 1.wav,,,
-drum2,2,Snare Youza 1.wav,,,
-drum2,3,Snare Youza 2.wav,,,
+bleep,0,000-Fx_09.wav,Computer Music magazine (special issue 68),,CMS68 > Rise of the Robots > Groove Criminals > FX
+bleep,1,010-Fx_09.wav,Computer Music magazine (special issue 68),,CMS68 > Rise of the Robots > Groove Criminals > FX
+dg,0,Processed_16.wav,Computer Music magazine (special issue 68),,CMS68 > Pure Evil > Groove Criminals > Evil_Guitar_Noise
+drbass,0,000 Kick Power trunc.wav,,,Derived from drbass:2
+drbass,1,001 Kick Power trunc2.wav,,,Derived from drbass:2
+drbass,2,100 Kick Power.wav,LazerDiceDrums,https://www.native-instruments.com/en/products/maschine/maschine-expansions/lazer-dice/pricing/,Commercial - not for redistribution
+drum,0,000 Kick LazerDice 6.wav,LazerDiceDrums,https://www.native-instruments.com/en/products/maschine/maschine-expansions/lazer-dice/pricing/,Commercial - not for redistribution
+drum,1,010 Snare Party 2.wav,LazerDiceDrums,https://www.native-instruments.com/en/products/maschine/maschine-expansions/lazer-dice/pricing/,Commercial - not for redistribution
+drum,2,011 Snare Turnt 2.wav,LazerDiceDrums,https://www.native-instruments.com/en/products/maschine/maschine-expansions/lazer-dice/pricing/,Commercial - not for redistribution
+drum,3,020 DnBHatD-06.wav,LazerDiceDrums,https://www.native-instruments.com/en/products/maschine/maschine-expansions/lazer-dice/pricing/,Commercial - not for redistribution
+drum2,0,Snare ElbeDock.wav,LazerDiceDrums,https://www.native-instruments.com/en/products/maschine/maschine-expansions/lazer-dice/pricing/,Commercial - not for redistribution
+drum2,1,Snare EnaSwag 1.wav,LazerDiceDrums,https://www.native-instruments.com/en/products/maschine/maschine-expansions/lazer-dice/pricing/,Commercial - not for redistribution
+drum2,2,Snare Youza 1.wav,LazerDiceDrums,https://www.native-instruments.com/en/products/maschine/maschine-expansions/lazer-dice/pricing/,Commercial - not for redistribution
+drum2,3,Snare Youza 2.wav,LazerDiceDrums,https://www.native-instruments.com/en/products/maschine/maschine-expansions/lazer-dice/pricing/,Commercial - not for redistribution
