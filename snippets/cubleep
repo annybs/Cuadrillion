@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: cubleep
+# group: cuadrillion
+# key: cubleep
+# expand-env: (yas-indent-line fixed)
+# --
+-- @cubleep
+d'bleep $
+  -- every' 5 2 (iter 4) $ -- (2)
+  -- every 3 (rev . slow 2 . chop 4) $ -- (1)
+  n "[[~ 0] ~ 1 ~]/4" # s "${1:bleep}"
+  # gain 1.2

@@ -1,0 +1,21 @@
+# -*- mode: snippet -*-
+# name: cugt3
+# group: cuadrillion
+# key: cugt3
+# expand-env: (yas-indent-line fixed)
+# --
+-- @cugt3
+let hp = 240
+    lp = 1200
+    r = 0.3
+  in d'gt3 $
+     (3 ~>) $
+     -- every' 4 2 (superimpose (3 <~)) $ -- (1) and (2) remove
+     slow 16 . gap 8 $ -- (2) remove
+     -- slow 30 . gap 15 $ -- (2)
+     sound "${1:dg}"
+     # gain 0.9
+     # orbit 1 # room 0.2 # size 0.1
+     # speed (scale 1 1.25 $ slow 4.1 sine1)
+     # cutoff lp # resonance r
+     # hcutoff hp # resonance r

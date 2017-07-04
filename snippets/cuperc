@@ -1,0 +1,15 @@
+# -*- mode: snippet -*-
+# name: cuperc
+# group: cuadrillion
+# key: cuperc
+# expand-env: (yas-indent-line fixed)
+# --
+-- @cuperc
+d'perc $
+  stack [
+    -- 0.25 ~> n "[~ 3 2 ~ 0 2 3]/7", -- (3)
+    -- 0.75 ~> n "[3 2 ~ 2 3]/5", -- (2)
+    -- 0.5 ~> n "[3 2 ~]/3", -- (1)
+    n "[~ 1 0 ~]/4"
+  ]
+  # s "${1:drum2}"

@@ -1,0 +1,15 @@
+# -*- mode: snippet -*-
+# name: cuadrillion
+# group: cuadrillion
+# key: cuadrillion
+# expand-env: (yas-indent-line fixed)
+# --
+cusetup
+cubleep
+cudrumintro
+cuperc
+cudrum
+cubass
+cugt
+cugt2
+cugt3

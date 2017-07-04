@@ -1,0 +1,19 @@
+# -*- mode: snippet -*-
+# name: cubass
+# group: cuadrillion
+# key: cubass
+# expand-env: (yas-indent-line fixed)
+# --
+-- @cubass
+d'bass $
+  -- slowspread slow [1,1,1,2,3] $ -- (2)
+  (0.5 <~) $ rev $ gap 32 $
+  -- superimpose ((# gain 0.7) . (# speed 3)) $ -- (1)
+  every' 32 31 (overlay $ n "2" # s "$1") $
+  every' 16 16 (overlay $ n "1 ~" # s "$1") $
+  n "[0 0 [~ 0] !]/4" # s "${1:drbass}"
+  # gain 0.9
+  # vowel "{a, i}"
+  # shape 0.4
+  # orbit 1 # room 0.2 # size 0.1
+  # resonance 0.1 # cutoff 10 -- 10 -> 130, then delete

@@ -2,15 +2,14 @@
 Anny: Cuadrillion (Demo)
 anny.audio
 
-First played for Algorave's fith birthday, #algofive 17th March 2017
+Current version: 0.5.0
+Compatibility:
+  Tidal Cycles  1.0-dev (cb070d6)
+  SuperDirt     1.0-dev (1c526bf)
+  SuperCollider 3.8
+License: CC-BY-SA https://creativecommons.org/licenses/by-sa/4.0/
 
-Written for Fwonk release nr. 200 out in March 2017. FW200 is Fwonk's
-final release, at least in its current form, but its catalogue will
-live on. There is a lot of very good electronic music in there, so be
-sure to check it out some time!
-fwonk.co.uk
-
-See README.md
+See README.md for more information
 -}
 
 let bpm b = cps (b/60)
@@ -31,32 +30,29 @@ d'bleep $
   -- every' 5 2 (iter 4) $ -- (2)
   -- every 3 (rev . slow 2 . chop 4) $ -- (1)
   n "[[~ 0] ~ 1 ~]/4" # s "bleep"
-  # gain "1.2"
-
-d'drum $
-  every' 16 16 (overlay $ n "~ 1!!" # s "drum") $
-  1 <~ n "1/16" # s "drum"
+  # gain 1.2
 
 -- @cudrumintro
 d'drum $
   every' 16 16 (overlay $ n "~ 1!!" # s "drum") $
-  n "{1, [~! [~ 0]!]/4}" # s "drum"
+  1 <~ n "1/16" # s "drum" -- (0)
+  -- n "{1, [~! [~ 0]!]/4}" # s "drum" -- (1)
+  -- n "{1, [~! [~ 0]!]/4, [[~ 3] 3]/2}" # s "drum" -- (2)
 
-d'drum $
-  every' 16 16 (overlay $ n "~ 1!!" # s "drum") $
-  n "{1, [~! [~ 0]!]/4, [[~ 3] 3]/2}" # s "drum"
-
-d'perc $ n "[~ 1 ~ ~]/4" # s "drum2"
+-- cudrumintro @ 1
+-- cudrumintro @ 2
 
 -- @cuperc
 d'perc $
   stack [
-    n "[~ 1 0 ~]/4",
-    0.5 ~> n "[3 2 ~]/3"
-    -- 0.75 ~> n "[3 2 ~ 2 3]/5", -- (1)
-    -- 0.25 ~> n "[~ 3 2 ~ 0 2 3]/7" -- (2)
+    -- 0.25 ~> n "[~ 3 2 ~ 0 2 3]/7", -- (3)
+    -- 0.75 ~> n "[3 2 ~ 2 3]/5", -- (2)
+    -- 0.5 ~> n "[3 2 ~]/3", -- (1)
+    n "[~ 1 0 ~]/4"
   ]
   # s "drum2"
+
+-- cuperc @ 1
 
 -- @cudrum
 d'drum $
@@ -68,15 +64,15 @@ d'drum $
 d'bass $
   -- slowspread slow [1,1,1,2,3] $ -- (2)
   (0.5 <~) $ rev $ gap 32 $
-  -- superimpose ((# gain "0.7") . (# speed "3")) $ -- (1)
+  -- superimpose ((# gain 0.7) . (# speed 3)) $ -- (1)
   every' 32 31 (overlay $ n "2" # s "drbass") $
   every' 16 16 (overlay $ n "1 ~" # s "drbass") $
   n "[0 0 [~ 0] !]/4" # s "drbass"
-  # gain "0.9"
+  # gain 0.9
   # vowel "{a, i}"
-  # shape "0.4"
-  # orbit "1" # room "0.2" # size "0.1"
-  # resonance "0.1" # cutoff "130" -- 10 -> 130
+  # shape 0.4
+  # orbit 1 # room 0.2 # size 0.1
+  # resonance 0.1 # cutoff 10 -- 10 -> 130, then delete
 
 -- @cugt
 d'gt $ -- every' 8 8 (const silence) $ -- (1) then (3) remove
@@ -85,8 +81,8 @@ d'gt $ -- every' 8 8 (const silence) $ -- (1) then (3) remove
   (0.5 ~>) $
   slow 8 $ smash 16 [1,2] $ striate 16 $
   n "0" # s "acb"
-  # cut "7"
-  # gain "0.8" -- 0.1 -> 0.8
+  # cut 7
+  # gain 0.8 -- 0.1 -> 0.8
   # speed (scale 0.7 1.4 $ slow 3 sine1)
   # vowel "u"
 
@@ -96,32 +92,32 @@ d'gt2 $ (0.5 <~) $
   iter 4 $
   striate 16 $
   sound "acg"
-  # cut "6"
-  # shape "0.4"
-  # gain "0.9"
+  # cut 6
+  # shape 0.4
+  # gain 0.9
 
--- drum @ 1
+-- cudrum @ 1
 
 -- @cugt3
-let hp = "240"
-    lp = "1200"
-    r = "0.3"
+let hp = 240
+    lp = 1200
+    r = 0.3
   in d'gt3 $
      (3 ~>) $
      -- every' 4 2 (superimpose (3 <~)) $ -- (1) and (2) remove
-     slow 16 . gap 8 $ -- (0) and (2) remove
+     slow 16 . gap 8 $ -- (2) remove
      -- slow 30 . gap 15 $ -- (2)
      sound "dg"
-     # gain "0.9"
-     # orbit "1" # room "0.2" # size "0.1"
+     # gain 0.9
+     # orbit 1 # room 0.2 # size 0.1
      # speed (scale 1 1.25 $ slow 4.1 sine1)
      # cutoff lp # resonance r
      # hcutoff hp # resonance r
 
 msil [d'gt, d'gt2, d'gt3]
 
--- cuperc @ 1
 -- cuperc @ 2
+-- cuperc @ 3
 -- cugt @ 1
 -- cubass @ 1
 -- cugt2

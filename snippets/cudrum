@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: cudrum
+# group: cuadrillion
+# key: cudrum
+# expand-env: (yas-indent-line fixed)
+# --
+-- @cudrum
+d'drum $
+  -- every' 16 16 (density 2) $ -- (1) replacing (0)
+  every' 16 16 (within (0.5, 1) $ density 2) $ -- (0)
+  n "{0, 1, [~! [~ 0]!]/4, [[~ 3] 3]/2}" # s "${1:drum}"

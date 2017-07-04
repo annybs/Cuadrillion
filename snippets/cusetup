@@ -1,0 +1,16 @@
+# -*- mode: snippet -*-
+# name: cusetup
+# group: cuadrillion
+# key: cusetup
+# expand-env: (yas-indent-line fixed)
+# --
+let bpm b = cps (b/60)
+    msil = mapM_ ($ silence)
+    every' n o f = when ((== (o-1)) . (\`mod\` n)) f
+    d'drum = d1
+    d'perc = d2
+    d'bass = d3
+    d'bleep = d4
+    d'gt = d5
+    d'gt2 = d6
+    d'gt3 = d7
